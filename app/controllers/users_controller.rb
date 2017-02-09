@@ -9,6 +9,7 @@ class UsersController < ApplicationController
     # routesで設定している [resource]でのパラメータはデフォルトで :id
     # 変えたければ resources :users, param: :date
     @user = User.find(params[:id])
+    @microposts = @user.microposts.paginate(page: params[:page])
   end
   
   def destroy
